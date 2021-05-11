@@ -158,7 +158,7 @@ def bot_engine(login, browser, MAX_FOLLOWERS, MAX_LIKES, FOLLOW_DELAY, FOLLOW_PL
                         browser.execute_script("window.scrollBy(700,0)", "")
                 browser.get(url)
                 time.sleep(random.randrange(3, 5))
-                action = WebDriverWait(browser, 2).until(EC.presence_of_element_located((By.XPATH,"//body/div[@id='react-root']/section[1]/main[1]/div[1]/div[1]/article[1]/div[3]/section[1]/span[1]/button[1]/div[1]/span[1]/*[@aria-label='Like']")))
+                action = WebDriverWait(browser, 2).until(EC.presence_of_element_located((By.XPATH,"//body/div[@id='react-root']/section[1]/main[1]/div[1]/div[1]/article[1]/div[3]/section[1]/span[1]/button[1]/div[1]/span[1]/*[@aria-label='Curtir']")))
                 action.click()
                 time.sleep(1)
                 browser.save_screenshot(f'log/action/{login}.png')
@@ -176,7 +176,7 @@ def bot_engine(login, browser, MAX_FOLLOWERS, MAX_LIKES, FOLLOW_DELAY, FOLLOW_PL
                 if MAX_FOLLOWERS > follows:
                     try:
                         time.sleep(random.randrange(4,7))
-                        action = WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '//button[contains(text(), "Follow")]')))
+                        action = WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '//button[contains(text(), "Seguir")]')))
                         time.sleep(random.randrange(4, 7))
                         action.click()
                         time.sleep(1)
@@ -309,12 +309,13 @@ if __name__ == '__main__':
         try:
             login = info.strip().split(':')[0]
             senha = info.strip().split(':')[1]
+            username = info.strip().split(':')[2]
             start_timer = time.time()
             browser = helper.browser(headless)
             starter(browser,login,senha)
-            pre_bot(login, browser)
+            pre_bot(username, browser)
             print(f"[+] {green}BOT PREPARADO {white}")
-            bot_engine(login, browser, MAX_FOLLOWERS, MAX_LIKES, FOLLOW_DELAY, FOLLOW_PLUS)
+            bot_engine(username, browser, MAX_FOLLOWERS, MAX_LIKES, FOLLOW_DELAY, FOLLOW_PLUS)
             browser.quit()
             print(f'\n[+] BOT DUROU {red}{time.time() - start_timer}{white} SEGUNDOS')
             helper.relogio(200)
