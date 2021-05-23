@@ -1,2 +1,2 @@
 #/bin/bash
-echo $1 | python3 dizu.py
+python3 dizu.py < "1"

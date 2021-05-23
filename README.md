@@ -28,6 +28,5 @@ sudo chmod 755 /usr/bin/chromedriver
 
 ### Após estes basta executar
 python3 dizu_new.py
-
-### Ao inicio selecione qual a lista da's conta (1)
-
+ou utilizar do script
+./bot.sh
