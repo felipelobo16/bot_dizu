@@ -29,7 +29,7 @@
 ### Após estes basta executar
     $ python3 dizu_new.py
     
-### Ao inicio selecione qual a lista da's conta (1)
+#### Ao inicio selecione qual a lista da's conta (1)
 
 ### Ou pode-se utilizar do script diretamente:
     $ ./bot.sh
