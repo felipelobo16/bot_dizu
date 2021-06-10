@@ -42,7 +42,7 @@ def starter(browser,login,senha):
             browser.save_screenshot(f'log/block/{login}.png')
             browser.quit()
         try:
-            action = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,"//button[text()='Not Now']")))
+            action = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH,"//button[text()='Agora não']")))
             action.click()
         except:
             browser.switch_to.window(browser.window_handles[0])
@@ -192,7 +192,7 @@ def bot_engine(login, browser, MAX_FOLLOWERS, MAX_LIKES, FOLLOW_DELAY, FOLLOW_PL
                     except:
                         try:
                             time.sleep(1)
-                            browser.find_element_by_xpath('//button[contains(text(), "Message")]')
+                            browser.find_element_by_xpath('//button[contains(text(), "Enviar mensagem")]')
                         except:pass
                     time.sleep(random.randrange(20,25))
                     ultimo = blue + 'FOLLOW' + white
@@ -203,40 +203,40 @@ def bot_engine(login, browser, MAX_FOLLOWERS, MAX_LIKES, FOLLOW_DELAY, FOLLOW_PL
             url = None
             check = None
             try:
-                browser.find_element_by_xpath('//a[contains(text(),"Forgot password?")]')
-                check = 'Forgot password'
+                browser.find_element_by_xpath('//a[contains(text(),"Esqueceu a senha?")]')
+                check = 'Esqueceu a senha'
             except:
                 pass
             try:
-                browser.find_element_by_xpath('//*[contains(text(),"We\'ve detected suspicious activity on your")]')
-                check = 'We\'ve detected suspicious activity on your'
+                browser.find_element_by_xpath('//*[contains(text(),"atividade suspeita")]')
+                check = 'Nos detectamos atividade suspeita na sua conta'
             except:
                 pass
             try:
-                browser.find_element_by_xpath('//div[contains(text(),"Change your password to continue using")]')
-                check = 'Change your password to continue using'
-            except:
-                pass
-            try:
-                browser.find_element_by_xpath(
-                    "//div[contains(text(),'Your account has been temporarily blocked from')]")
-                check = 'Your account has been temporarily blocked from'
+                browser.find_element_by_xpath('//div[contains(text(),"Altere sua senha")]')
+                check = 'Altere sua senha para continuar usando'
             except:
                 pass
             try:
                 browser.find_element_by_xpath(
-                    "//div[contains(text(),'We will send a confirmation code via SMS to your')]")
-                check = 'We will send a confirmation code via SMS to your'
+                    "//div[contains(text(),'temporariamente bloqueada')]")
+                check = 'Sua conta foi temporariamente bloqueada'
             except:
                 pass
             try:
-                browser.find_element_by_xpath('//*[contains(text(), "We noticed unusual activity from your account")]')
-                check = 'We noticed unusual activity from your account'
+                browser.find_element_by_xpath(
+                    "//div[contains(text(),'código de confirmação')]")
+                check = 'Nos enviamos um código de confirmação via SMS para você'
+            except:
+                pass
+            try:
+                browser.find_element_by_xpath('//*[contains(text(), "atividade suspeita")]')
+                check = 'Nós notamos uma atividade suspeita na sua conta'
             except:
                 pass
             try:
                 if soft < 1:
-                    browser.find_element_by_xpath("//*[contains(text(), 'We restrict certain activity to protect our community')]")
+                    browser.find_element_by_xpath("//*[contains(text(), 'restringimos')]")
                     print(f"\n{red}[!] SOFT [!]")
                     print(f"{green}[!] RESTART... [!]{white}")
                     time.sleep(1)
