@@ -1,2 +1,2 @@
-#/bin/bash
-python3 dizu.py < "1"
+#!/bin/bash
+echo "1" | python3 dizu_new.py
